@@ -31,7 +31,7 @@ class SeoMeta
             $keyword = array_map('trim', explode(',', $keyword));
         }
 
-        self::$keywords[] += $keyword;
+        self::$keywords += $keyword;
     }
 
     // SEOMeta::addMeta('article:section', $post->category, 'property');
@@ -48,12 +48,13 @@ class SeoMeta
 
     static public function getTitle()
     {
-        return '<title>' . implode(self::$separator, self::$title) . '</title>';
+        $title = array_reverse(self::$title);
+        return '<title>' . implode(self::$separator, $title) . '</title>';
     }
 
     static public function getKeywords()
     {
-        return '<meta name=keywords content="' . implode(', ', $keywords) . '">';
+        return '<meta name=keywords content="' . implode(', ', self::$keywords) . '">';
     }
 
     static public function getDescription()
@@ -65,7 +66,7 @@ class SeoMeta
     {
         $html = array();
         foreach (self::$metatags as $key => $value){
-            $html[]  = '<meta ' . $value[0] . '=' . $key . ' content="' . $value[1] . '>';
+            $html[]  = '<meta ' . $value[0] . '=' . $key . ' content="' . $value[1] . '">';
         }
         return implode(PHP_EOL, $html);
     }
