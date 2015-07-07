@@ -1,0 +1,22 @@
+{
+    "name": "unamatasanatarai/seo",
+    "type": "library",
+    "description": "Universal seo",
+    "homepage": "https://github.com/unamatasanatarai/seo",
+    "keywords": ["seo"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Unamata Sanatarai",
+            "email": "unamatasanatarai@gmail.com",
+            "homepage": "http://www.compelo.com/",
+            "role": "Main Developer"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/Unamatasanatarai/SEO"
+        ]
+    },
+    "minimum-stability": "dev"
+}
