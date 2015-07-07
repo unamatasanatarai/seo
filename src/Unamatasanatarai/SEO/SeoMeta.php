@@ -28,10 +28,12 @@ class SeoMeta
     static public function addKeyword($keyword)
     {
         if (!is_array($keyword)){
-            $keyword = array_map('trim', explode(',', $keyword));
+            $keyword = explode(',', $keyword);
         }
 
-        self::$keywords += $keyword;
+        foreach($keyword as $word){
+            self::$keywords[] = trim($word);
+        }
     }
 
     // SEOMeta::addMeta('article:section', $post->category, 'property');
@@ -54,7 +56,7 @@ class SeoMeta
 
     static public function getKeywords()
     {
-        return '<meta name=keywords content="' . implode(', ', self::$keywords) . '">';
+        return '<meta name=keywords content="' . implode(',', array_unique(self::$keywords)) . '">';
     }
 
     static public function getDescription()
